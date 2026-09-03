@@ -10,6 +10,7 @@ import Analytics from "./admin/Analytics";
 import Orders from "./admin/Orders";
 import Inventory from "./admin/Inventory";
 import AdminChat from "./admin/Chat";
+import QuickStart from "./admin/QuickStart";
 
 type Tab = "overview" | "orders" | "inventory" | "chat";
 
@@ -248,7 +249,12 @@ function Dashboard() {
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
           >
-            {tab === "overview" && <Analytics />}
+            {tab === "overview" && (
+              <>
+                <QuickStart />
+                <Analytics />
+              </>
+            )}
             {tab === "orders" && <Orders />}
             {tab === "inventory" && <Inventory />}
             {tab === "chat" && <AdminChat />}
