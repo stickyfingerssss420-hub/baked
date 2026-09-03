@@ -1,0 +1,241 @@
+@import "tailwindcss";
+
+/* ————— Scoopable Cookies design tokens ————— */
+@theme {
+  --font-display: "Fraunces", "Georgia", serif;
+  --font-body: "Karla", "Trebuchet MS", sans-serif;
+
+  --color-cream-50: #fcf9f1;
+  --color-cream-100: #f7f0e0;
+  --color-cream-200: #f0e4cc;
+  --color-cream-300: #e6d3b3;
+
+  --color-latte-300: #e2cba4;
+  --color-latte-400: #d4b888;
+  --color-latte-500: #c2a06a;
+
+  --color-cocoa-300: #c39a6b;
+  --color-cocoa-400: #a97c50;
+  --color-cocoa-500: #8f6238;
+  --color-cocoa-600: #744d2a;
+  --color-cocoa-700: #5c3b20;
+  --color-cocoa-800: #462c18;
+
+  --color-espresso-700: #4a331f;
+  --color-espresso-800: #3a2517;
+  --color-espresso-900: #2a1a0f;
+  --color-espresso-950: #1f120a;
+
+  --color-gold-200: #eed9ab;
+  --color-gold-300: #e3c386;
+  --color-gold-400: #d4a85c;
+  --color-gold-500: #c0913f;
+  --color-gold-600: #a2762c;
+  --color-gold-700: #7f5a1f;
+
+  --color-blush-300: #f0b49c;
+  --color-blush-400: #e59a7e;
+
+  --color-leaf-400: #86a765;
+  --color-leaf-500: #6b8f4e;
+  --color-leaf-600: #55753c;
+
+  --color-danger-400: #d4785f;
+  --color-danger-500: #c25e4c;
+  --color-danger-600: #a84836;
+
+  --shadow-soft: 0 2px 10px rgba(70, 44, 24, 0.07), 0 12px 32px rgba(70, 44, 24, 0.09);
+  --shadow-lift: 0 4px 14px rgba(70, 44, 24, 0.1), 0 22px 48px rgba(70, 44, 24, 0.16);
+}
+
+/* ————— Base ————— */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-cream-100);
+  color: var(--color-espresso-900);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ————— Cross-device + accessibility ————— */
+/* clear keyboard focus ring on every interactive element */
+:focus-visible {
+  outline: 2.5px solid var(--color-gold-500);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+/* no blue tap flash on phones; no double-tap zoom delay on buttons */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+button, a, [role="button"], label {
+  touch-action: manipulation;
+}
+/* iOS Safari zooms on focus if inputs are < 16px — prevent that */
+@media (pointer: coarse) {
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}
+/* respect notches / home bars on phones */
+.safe-b {
+  padding-bottom: max(0px, env(safe-area-inset-bottom));
+}
+::selection {
+  background: var(--color-gold-300);
+  color: var(--color-espresso-900);
+}
+
+/* ————— Textures ————— */
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.42 0 0 0 0 0.29 0 0 0 0 0.16 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.dotgrid {
+  background-image: radial-gradient(rgba(143, 98, 56, 0.16) 1.2px, transparent 1.2px);
+  background-size: 22px 22px;
+}
+.dotgrid-dark {
+  background-image: radial-gradient(rgba(227, 195, 134, 0.13) 1.2px, transparent 1.2px);
+  background-size: 22px 22px;
+}
+
+/* ————— Keyframes ————— */
+@keyframes bob {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
+}
+@keyframes bob-sm {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+@keyframes shadow-breathe {
+  0%, 100% { transform: scaleX(1); opacity: 0.35; }
+  50% { transform: scaleX(0.82); opacity: 0.22; }
+}
+@keyframes blink {
+  0%, 91%, 100% { transform: scaleY(1); }
+  94% { transform: scaleY(0.08); }
+  97% { transform: scaleY(1); }
+}
+@keyframes wink {
+  0%, 100% { transform: scaleY(1); }
+  30%, 60% { transform: scaleY(0.08); }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes float-chip {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-14px) rotate(10deg); }
+}
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+@keyframes pop {
+  0% { transform: scale(0.4); }
+  55% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-7deg); }
+  75% { transform: rotate(7deg); }
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-7px); }
+  40% { transform: translateX(7px); }
+  60% { transform: translateX(-5px); }
+  80% { transform: translateX(5px); }
+}
+@keyframes typing {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.45; }
+  30% { transform: translateY(-4px); opacity: 1; }
+}
+@keyframes pulse-ring {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+@keyframes rise-fade {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ————— Mascot ————— */
+.mascot-bob { animation: bob 4.2s ease-in-out infinite; transform-origin: 50% 60%; }
+.mascot-bob-sm { animation: bob-sm 3.4s ease-in-out infinite; }
+.mascot-shadow { animation: shadow-breathe 4.2s ease-in-out infinite; transform-origin: center; }
+.mascot-eye { animation: blink 5.2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.mascot-eye-wink { transform-box: fill-box; transform-origin: center; }
+.mascot:hover .mascot-eye-wink { animation: wink 0.9s ease-in-out 1; }
+.mascot-shades { transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.mascot:hover .mascot-shades { transform: translateY(19px); }
+.mascot-smile-smirk { opacity: 0; transition: opacity 0.3s ease; }
+.mascot:hover .mascot-smile-smirk { opacity: 1; }
+.mascot:hover .mascot-smile-default { opacity: 0; }
+.mascot-smile-default { transition: opacity 0.3s ease; }
+.mascot-sparkle { opacity: 0; transition: opacity 0.3s ease; transform-box: fill-box; transform-origin: center; }
+.mascot:hover .mascot-sparkle { opacity: 1; animation: spin-slow 6s linear infinite; }
+.mascot-wave { transform-box: fill-box; transform-origin: 20% 85%; }
+.mascot:hover .mascot-wave { animation: wiggle 0.7s ease-in-out 2; }
+
+/* ————— Motion helpers ————— */
+.anim-marquee { animation: marquee 32s linear infinite; }
+.anim-marquee:hover { animation-play-state: paused; }
+.anim-float-chip { animation: float-chip 5s ease-in-out infinite; }
+.anim-spin-slow { animation: spin-slow 42s linear infinite; }
+.anim-pop { animation: pop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.anim-shake { animation: shake 0.45s ease-in-out; }
+.anim-rise { animation: rise-fade 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.typing-dot { animation: typing 1.2s ease-in-out infinite; }
+.pulse-ring::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 2px solid var(--color-gold-400);
+  animation: pulse-ring 1.8s ease-out infinite;
+}
+
+/* Gold sheen sweep on buttons */
+.btn-sheen { position: relative; overflow: hidden; }
+.btn-sheen::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(105deg, transparent, rgba(252, 249, 241, 0.35), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.55s ease;
+}
+.btn-sheen:hover::after { left: 130%; }
+
+/* ————— Scrollbars ————— */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.thin-scroll::-webkit-scrollbar { width: 6px; height: 6px; }
+.thin-scroll::-webkit-scrollbar-thumb { background: rgba(143, 98, 56, 0.35); border-radius: 999px; }
+.thin-scroll::-webkit-scrollbar-track { background: transparent; }
+
+/* ————— Reduced motion ————— */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+}
