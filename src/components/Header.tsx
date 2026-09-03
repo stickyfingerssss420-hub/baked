@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ShoppingBasket } from "lucide-react";
 import Logo from "./Logo";
+import ShareButton from "./ShareButton";
 import { useShop } from "../context/ShopContext";
 import { BIZ } from "../data/catalog";
 import { cx } from "../lib/utils";
@@ -79,6 +80,10 @@ export default function Header() {
             </Link>
           </nav>
 
+          <div className="flex items-center gap-2">
+          {/* share — native sheet on phones, copy-link on desktop */}
+          <ShareButton className="hidden sm:grid" />
+
           {/* cart */}
           <button
             onClick={() => setDrawerOpen(true)}
@@ -97,6 +102,7 @@ export default function Header() {
               {count}
             </span>
           </button>
+          </div>
         </div>
 
         {/* mobile quick-nav */}
@@ -113,6 +119,7 @@ export default function Header() {
           <Link to="/admin" className="shrink-0 px-3 py-1.5 text-[13px] font-semibold text-cocoa-500 rounded-full bg-cream-200/70">
             Admin
           </Link>
+          <ShareButton className="sm:hidden !w-8 !h-8 ml-1" />
         </nav>
       </header>
     </>

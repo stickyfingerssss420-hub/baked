@@ -26,6 +26,18 @@ src/
 SETUP.md                       ← this file
 ```
 
+## 1b. Share it on social media
+
+Once the site is live (step 4), sharing is automatic:
+
+- **The link itself carries the preview.** Facebook, Messenger, WhatsApp, Instagram DMs, and X read the Open Graph tags in `index.html` — sharing your link shows the Crumb mascot banner, the shop title, and the description. No extra work per post.
+- **Built-in share button.** The storefront header has a share icon: on phones it opens the native share sheet (Messenger, FB, IG Stories, WhatsApp, copy…), on desktop it copies the link and confirms with a toast.
+- **Per-platform notes:**
+  - *Instagram feed posts* don't allow links — put the URL in your bio, and use the Link sticker in Stories.
+  - *Facebook page* — pin a post with the link; the preview renders automatically.
+  - *First share can cache* — if a platform shows an old/wrong preview, force a re-scrape with Facebook's Sharing Debugger or X's Card Validator.
+- **After deploying**, update `og:url` in `index.html` to your real domain (the placeholder is marked with a comment), and rebuild.
+
 ## 2. Run locally
 
 ```bash
