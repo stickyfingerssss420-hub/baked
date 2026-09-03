@@ -19,7 +19,7 @@ export default function Footer({ onLegal }: Props) {
           <div>
             <Logo dark size={46} tagline="Small-Batch · Quezon City" />
             <p className="mt-4 text-[14px] leading-relaxed text-cream-200/75 max-w-xs">
-              Warm, gooey, scoopable cookies and dense fudge brownies — baked in small batches and handed over still warm.
+              Scoopable cookie dough and dense fudge brownie batter — made fresh in small batches, chilled and ready for your oven (or your spoon).
             </p>
             <div className="mt-5 flex items-center gap-2.5">
               {[
@@ -64,7 +64,7 @@ export default function Footer({ onLegal }: Props) {
 
           {/* hours */}
           <div>
-            <p className="text-[11px] font-bold tracking-[0.24em] uppercase text-gold-400">Oven hours</p>
+            <p className="text-[11px] font-bold tracking-[0.24em] uppercase text-gold-400">Scoop hours</p>
             <ul className="mt-4 space-y-2 text-[14px] text-cream-200/85">
               <li>{BIZ.hours}</li>
               <li className="text-cream-200/60">Closed Mondays — we rest the dough.</li>
@@ -93,7 +93,7 @@ export default function Footer({ onLegal }: Props) {
           </svg>
           <p className="text-[13px] leading-relaxed text-cream-200/85">
             <span className="font-bold text-gold-300">Allergen Warning:</span> Contains wheat, eggs, dairy, and nuts. Baked in a home
-            kitchen that handles these ingredients daily — please order mindfully.
+            kitchen that handles these ingredients daily — please order mindfully. Dough is best baked within 3 days; keep it chilled.
           </p>
         </div>
 

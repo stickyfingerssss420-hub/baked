@@ -60,7 +60,7 @@ export default function ChatWidget() {
         sendChat({
           name: myName,
           role: "bot",
-          text: `Hi ${myName}! Crumb here. I've pinged the baker — she usually replies within a few minutes, once the tray is out of the oven.`,
+          text: `Hi ${myName}! Crumb here. I've pinged the baker — she usually replies within a few minutes, once she's done scooping today's batch.`,
         });
       }, 1500);
     }

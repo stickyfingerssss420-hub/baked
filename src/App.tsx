@@ -24,7 +24,7 @@ function ScrollToTop() {
   return null;
 }
 
-/* short "warming up the ovens" splash on first load */
+/* short "scooping something sweet" splash on first load */
 function LoadingScreen({ done }: { done: boolean }) {
   return (
     <AnimatePresence>
@@ -36,7 +36,7 @@ function LoadingScreen({ done }: { done: boolean }) {
         >
           <div className="text-center">
             <Logo stacked size={132} tagline="Small-Batch Bakery" />
-            <p className="mt-5 font-display font-semibold text-espresso-900 text-[22px]">Warming up the ovens…</p>
+            <p className="mt-5 font-display font-semibold text-espresso-900 text-[22px]">Scooping something sweet…</p>
             <div className="mt-3 flex justify-center gap-1.5">
               {[0, 1, 2].map((i) => (
                 <span key={i} className="typing-dot w-2 h-2 rounded-full bg-gold-500 inline-block" style={{ animationDelay: `${i * 0.18}s` }} />

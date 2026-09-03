@@ -47,7 +47,7 @@ export default function ProductCard({ product, index = 0 }: Props) {
             soldOut ? "bg-danger-500 text-cream-50" : low ? "bg-danger-500/90 text-cream-50" : "bg-cream-50/90 text-cocoa-600",
           )}
         >
-          {soldOut ? "Sold out" : low ? `Only ${stock} left` : "Fresh batch"}
+          {soldOut ? "Sold out" : low ? `Only ${stock} left` : "Freshly scooped"}
         </span>
       </div>
 
@@ -80,7 +80,7 @@ export default function ProductCard({ product, index = 0 }: Props) {
           )}
         >
           <Plus size={17} strokeWidth={2.8} />
-          {soldOut ? "Back after the next bake" : "Add to Tray"}
+          {soldOut ? "Back after the next batch" : "Add to Tray"}
         </button>
       </div>
     </motion.article>

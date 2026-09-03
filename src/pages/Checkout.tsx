@@ -129,7 +129,7 @@ export default function Checkout() {
               <CheckCircle2 size={44} strokeWidth={1.8} />
             </motion.div>
             <h1 className="mt-5 font-display font-semibold text-espresso-900 text-[clamp(2rem,5vw,3rem)] leading-tight">
-              Order's in the oven!
+              Order's scooped!
             </h1>
             <p className="mt-2 text-[15px] text-cocoa-600">
               Your order number is{" "}
@@ -240,7 +240,7 @@ export default function Checkout() {
           >
             <div className="text-center">
               <CookieMascot size={150} className="mx-auto" />
-              <p className="mt-4 font-display font-semibold text-cream-50 text-[22px]">Sending your order to the oven…</p>
+              <p className="mt-4 font-display font-semibold text-cream-50 text-[22px]">Scooping up your order…</p>
               <p className="mt-1 text-[13.5px] text-cream-200/70">Crumb is sealing the bag with a sticker.</p>
             </div>
           </motion.div>
@@ -250,7 +250,7 @@ export default function Checkout() {
       {/* brand bar — always shows whose checkout this is */}
       <div className="flex items-center justify-between gap-3 pb-5 border-b border-cocoa-500/12">
         <Link to="/" className="transition-opacity hover:opacity-80" aria-label="Scoopable Cookies home">
-          <Logo size={38} tagline="Warm · Gooey · Yours" />
+          <Logo size={38} tagline="Fresh · Gooey · Yours" />
         </Link>
         <span className="hidden sm:flex items-center gap-1.5 text-[12px] font-extrabold text-cocoa-500">
           <Lock size={14} className="text-gold-600" /> Secure checkout

@@ -11,7 +11,7 @@ const STEPS = [
   {
     icon: <Receipt size={16} />,
     title: "Confirm & complete orders",
-    body: "Open the Orders tab → tap a pending order → check the customer's GCash/Maya screenshot → hit “Confirm payment”, then “Mark completed” once it's baked and handed over.",
+    body: "Open the Orders tab → tap a pending order → check the customer's GCash/Maya screenshot → hit “Confirm payment”, then “Mark completed” once it's packed and handed over.",
   },
   {
     icon: <Package size={16} />,

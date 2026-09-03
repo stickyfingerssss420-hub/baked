@@ -20,8 +20,8 @@ const COPY = {
   terms: {
     title: "Terms of Service",
     body: [
-      `All cookies are baked to order in small batches. Prices are ₱50 per scoopable cookie and ₱80 per fudge brownie, inclusive of VAT. Local delivery is a flat ₱50 with a ₱250 minimum order; store pickup at ${BIZ.address} is free.`,
-      `GCash and Maya orders are confirmed once payment is verified against your uploaded screenshot — usually within the hour during oven hours. COD orders are payable upon pickup or delivery; please prepare exact change when possible.`,
+      `All dough is scooped to order in small batches and kept chilled until pickup or delivery. Prices are ₱50 per cookie-dough scoop and ₱80 per brownie-batter scoop, inclusive of VAT. Local delivery is a flat ₱50 with a ₱250 minimum order; store pickup at ${BIZ.address} is free.`,
+      `GCash and Maya orders are confirmed once payment is verified against your uploaded screenshot — usually within the hour during store hours. COD orders are payable upon pickup or delivery; please prepare exact change when possible.`,
       `Our kitchen handles wheat, eggs, dairy, and nuts. While we clean thoroughly between batches, we cannot guarantee zero cross-contact — our products are not suitable for severe allergies.`,
       `Cancellations are free before your order is confirmed. Once baking has started we can no longer refund, but we will always try to make it right — message us and we will sort it out.`,
     ],

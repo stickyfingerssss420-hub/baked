@@ -33,7 +33,7 @@ function Login() {
 
   const submit = () => {
     if (login(user, pass)) {
-      toast("Welcome back, boss", { sub: "The ovens are yours." });
+      toast("Welcome back, boss", { sub: "The scoop station is yours." });
     } else {
       setError(true);
       setShakeKey((k) => k + 1);
@@ -52,7 +52,7 @@ function Login() {
         <div>
           <CookieMascot size={240} className="cursor-pointer" />
           <h1 className="mt-6 font-display font-semibold text-[clamp(2rem,3.6vw,3rem)] leading-[1.06]">
-            The ovens are
+            The dough is
             <br />
             <em className="italic text-gold-300">listening.</em>
           </h1>

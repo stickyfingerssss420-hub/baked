@@ -42,7 +42,7 @@ export default function Header() {
         <div className="max-w-6xl mx-auto px-4 py-2 flex items-center justify-center gap-2 text-center">
           <span className="inline-block w-1.5 h-1.5 rounded-full bg-gold-400 animate-pulse" />
           <p>
-            Fresh batches out of the oven daily — order before <span className="text-gold-300 font-bold">3 PM</span> for same-day
+            Fresh dough scooped daily — order before <span className="text-gold-300 font-bold">3 PM</span> for same-day
             pickup at {BIZ.address}
           </p>
         </div>

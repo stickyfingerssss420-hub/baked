@@ -14,7 +14,7 @@ const FILTERS = [
 ] as const;
 
 const MARQUEE = [
-  "Warm & gooey",
+  "Fresh & gooey",
   "Small batch",
   "Baked daily",
   "₱50 scoopable cookies",
@@ -73,11 +73,11 @@ export default function Home() {
               className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-gold-500/40 bg-gold-400/10 text-[12px] font-bold tracking-[0.14em] uppercase text-cocoa-600"
             >
               <Sparkles size={13} className="text-gold-600" />
-              Small-batch bake shop · {BIZ.address}
+              Small-batch dough shop · {BIZ.address}
             </motion.div>
 
             <h1 className="mt-5 font-display font-semibold text-espresso-900 leading-[1.02] tracking-tight text-[clamp(2.7rem,7.2vw,4.6rem)]">
-              <LineMask delay={0.08}>Warm, gooey,</LineMask>
+              <LineMask delay={0.08}>Fresh dough,</LineMask>
               <LineMask delay={0.2}>
                 <em className="not-italic font-display italic text-gold-600">dangerously</em>
               </LineMask>
@@ -90,8 +90,8 @@ export default function Home() {
               transition={{ duration: 0.7, delay: 0.42 }}
               className="mt-5 max-w-md text-[16px] leading-relaxed text-cocoa-600"
             >
-              Hand-scooped cookies at <strong className="text-espresso-900">{peso(50)}</strong> and dense fudge brownies at{" "}
-              <strong className="text-espresso-900">{peso(80)}</strong> — baked in batches of twenty-four and handed over still warm.
+              Hand-scooped cookie dough at <strong className="text-espresso-900">{peso(50)}</strong> and fudge brownie batter at{" "}
+              <strong className="text-espresso-900">{peso(80)}</strong> — made in batches of twenty-four, chilled and ready for your oven (or your spoon).
             </motion.p>
 
             <motion.div
@@ -224,7 +224,7 @@ export default function Home() {
             </div>
           </div>
           <p className="mt-4 text-[14px] text-cocoa-500 max-w-lg">
-            Everything is scooped and baked to order. What you see below is today's batch — when a tray sells out, it's gone until the
+            Everything is scooped to order and kept cold. What you see below is today's batch — when a tray sells out, it's gone until the
             next bake.
           </p>
         </Reveal>
@@ -251,7 +251,7 @@ export default function Home() {
                 events & office days
               </h3>
               <p className="mt-2 text-[13.5px] text-cream-200/75 leading-relaxed">
-                Two dozen or two hundred — we price boxes per tray and deliver warm. Message us 48 hours ahead.
+                Two dozen or two hundred — we price boxes per tray and deliver chilled. Message us 48 hours ahead.
               </p>
             </div>
             <div className="relative flex items-end justify-between mt-6">
@@ -331,7 +331,7 @@ export default function Home() {
         <Reveal>
           <p className="text-[11px] font-bold tracking-[0.3em] uppercase text-gold-600">The scoop on us</p>
           <h2 className="mt-2 font-display font-semibold text-espresso-900 text-[clamp(2rem,4.6vw,3.1rem)] leading-[1.08] tracking-tight">
-            One oven, one baker,
+            One recipe, one baker,
             <br />
             <em className="italic text-cocoa-500">zero shortcuts.</em>
           </h2>
@@ -341,14 +341,14 @@ export default function Home() {
               patience: dough rested overnight, butter browned low and slow, chocolate chopped by hand.
             </p>
             <p>
-              Every cookie is scooped to order and pulled while the middle still trembles — that's the gooey part. Eat it warm, or
-              toast it for ten seconds and thank us later.
+              Every scoop is portioned to order and chilled so the middle stays soft — that's the gooey part. Bake it at home for
+              golden edges, or eat it straight from the tub and thank us later.
             </p>
           </div>
           <div className="mt-7 grid grid-cols-3 gap-4 max-w-md">
             {[
               ["24", "cookies per batch, never more"],
-              ["14 min", "from oven to your hands"],
+              ["14 min", "from scoop to your hands"],
               ["4.9★", "from 300+ neighbors"],
             ].map(([big, small]) => (
               <div key={big} className="border-l-2 border-gold-500/60 pl-3">
@@ -378,7 +378,7 @@ export default function Home() {
                 <circle cx="50" cy="50" r="49" fill="#C0913F" />
                 <circle cx="50" cy="50" r="26" fill="#FCF9F1" />
                 <text fontSize="11.5" fontWeight="800" letterSpacing="2.5" fill="#2A1A0F">
-                  <textPath href="#circ">FRESH · WARM · GOOEY · FRESH ·</textPath>
+                  <textPath href="#circ">FRESH · GOOEY · SCOOPABLE · FRESH ·</textPath>
                 </text>
                 <ellipse cx="44" cy="47" rx="4" ry="3.5" fill="#4A2E17" />
                 <ellipse cx="56" cy="52" rx="4" ry="3.5" fill="#4A2E17" />
@@ -397,9 +397,9 @@ export default function Home() {
           <Reveal>
             <p className="text-[11px] font-bold tracking-[0.3em] uppercase text-gold-400">Craving now?</p>
             <h2 className="mt-2 font-display font-semibold text-[clamp(1.9rem,4vw,2.8rem)] leading-[1.06] tracking-tight">
-              The oven's already
+              The dough's already
               <br />
-              <em className="italic text-gold-300">preheating.</em>
+              <em className="italic text-gold-300">chilled.</em>
             </h2>
             <p className="mt-4 text-[14.5px] text-cream-200/70 max-w-sm leading-relaxed">
               Order before 3 PM for same-day pickup. Delivery slots fill fast on weekends — the early bird gets the gooey center.
