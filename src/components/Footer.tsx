@@ -1,6 +1,6 @@
 import { Mail, MapPin, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
-import CookieMascot from "./CookieMascot";
+import Logo from "./Logo";
 import { BIZ } from "../data/catalog";
 
 interface Props {
@@ -17,13 +17,7 @@ export default function Footer({ onLegal }: Props) {
         <div className="grid gap-10 md:grid-cols-[1.3fr_1fr_1fr_1fr]">
           {/* brand */}
           <div>
-            <div className="flex items-center gap-3">
-              <CookieMascot size={54} withShadow={false} />
-              <div className="leading-none">
-                <p className="font-display font-semibold text-2xl text-cream-50">Scoopable</p>
-                <p className="text-[9px] font-bold tracking-[0.32em] text-gold-400 uppercase mt-1">Cookies · Small Batch</p>
-              </div>
-            </div>
+            <Logo dark size={46} tagline="Small-Batch · Quezon City" />
             <p className="mt-4 text-[14px] leading-relaxed text-cream-200/75 max-w-xs">
               Warm, gooey, scoopable cookies and dense fudge brownies — baked in small batches and handed over still warm.
             </p>

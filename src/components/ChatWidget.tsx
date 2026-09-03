@@ -83,10 +83,12 @@ export default function ChatWidget() {
             <div className="flex items-center gap-3 px-4 py-3 bg-espresso-900 text-cream-50 shrink-0">
               <CookieMascot size={40} withShadow={false} />
               <div className="flex-1 leading-tight">
-                <p className="font-display font-semibold text-[16px]">Scoopable Support</p>
+                <p className="font-display font-semibold text-[16px]">
+                  Scoopable <em className="italic text-gold-300">Cookies</em>
+                </p>
                 <p className="text-[11px] text-cream-200/70 flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-leaf-400 inline-block" />
-                  Usually replies in minutes
+                  Live support · usually replies in minutes
                 </p>
               </div>
               <button onClick={() => setOpen(false)} className="w-8 h-8 grid place-items-center rounded-full hover:bg-espresso-800 transition-colors" aria-label="Close chat">

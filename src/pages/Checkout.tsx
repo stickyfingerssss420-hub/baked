@@ -8,6 +8,7 @@ import {
   CheckCircle2,
   ImagePlus,
   Loader2,
+  Lock,
   Store,
   Tag,
   Trash2,
@@ -17,6 +18,7 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import confetti from "canvas-confetti";
 import CookieMascot from "../components/CookieMascot";
+import Logo from "../components/Logo";
 import { useShop, type CheckoutDetails } from "../context/ShopContext";
 import { BIZ } from "../data/catalog";
 import type { DeliveryMethod, Order, PaymentMethod } from "../lib/backend";
@@ -117,6 +119,7 @@ export default function Checkout() {
       <main className="max-w-2xl mx-auto px-4 py-16">
         <motion.div initial={{ opacity: 0, y: 26 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}>
           <div className="text-center">
+            <Logo stacked size={88} tagline="Order received" className="mb-5" />
             <motion.div
               initial={{ scale: 0.4, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -205,8 +208,9 @@ export default function Checkout() {
   /* -------------------------- empty state -------------------------- */
   if (lines.length === 0) {
     return (
-      <main className="max-w-xl mx-auto px-4 py-24 text-center">
-        <CookieMascot size={160} className="mx-auto" />
+      <main className="max-w-xl mx-auto px-4 py-20 text-center">
+        <Logo size={40} tagline="Small-Batch Bakery" className="justify-center" />
+        <CookieMascot size={150} className="mx-auto mt-8" />
         <h1 className="mt-6 font-display font-semibold text-espresso-900 text-[clamp(1.9rem,5vw,2.6rem)]">Nothing to check out yet</h1>
         <p className="mt-2 text-[15px] text-cocoa-600">Your tray is empty. Scoop up a few cookies first, then come back.</p>
         <Link
@@ -243,7 +247,17 @@ export default function Checkout() {
         )}
       </AnimatePresence>
 
-      <Link to="/" className="inline-flex items-center gap-2 text-[13.5px] font-bold text-cocoa-500 hover:text-espresso-900 transition-colors">
+      {/* brand bar — always shows whose checkout this is */}
+      <div className="flex items-center justify-between gap-3 pb-5 border-b border-cocoa-500/12">
+        <Link to="/" className="transition-opacity hover:opacity-80" aria-label="Scoopable Cookies home">
+          <Logo size={38} tagline="Warm · Gooey · Yours" />
+        </Link>
+        <span className="hidden sm:flex items-center gap-1.5 text-[12px] font-extrabold text-cocoa-500">
+          <Lock size={14} className="text-gold-600" /> Secure checkout
+        </span>
+      </div>
+
+      <Link to="/" className="mt-6 inline-flex items-center gap-2 text-[13.5px] font-bold text-cocoa-500 hover:text-espresso-900 transition-colors">
         <ArrowLeft size={16} />
         Keep shopping
       </Link>

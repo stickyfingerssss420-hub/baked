@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ShoppingBasket } from "lucide-react";
-import CookieMascot from "./CookieMascot";
+import Logo from "./Logo";
 import { useShop } from "../context/ShopContext";
 import { BIZ } from "../data/catalog";
 import { cx } from "../lib/utils";
@@ -55,15 +55,9 @@ export default function Header() {
         )}
       >
         <div className="max-w-6xl mx-auto px-4 h-[68px] flex items-center justify-between gap-3">
-          {/* brand */}
-          <Link to="/" className="flex items-center gap-2.5 group shrink-0" aria-label="Scoopable Cookies home">
-            <span className="transition-transform duration-300 group-hover:-rotate-6">
-              <CookieMascot size={46} withShadow={false} />
-            </span>
-            <span className="leading-none">
-              <span className="block font-display font-semibold text-[22px] text-espresso-900 tracking-tight">Scoopable</span>
-              <span className="block text-[9px] font-bold tracking-[0.32em] text-cocoa-500 uppercase mt-1">Cookies · Small Batch</span>
-            </span>
+          {/* brand — full logo lockup so the shop name is always obvious */}
+          <Link to="/" className="group shrink-0 transition-transform duration-300 hover:-rotate-1" aria-label="Scoopable Cookies home">
+            <Logo size={42} tagline="Small-Batch Bakery" />
           </Link>
 
           {/* nav */}

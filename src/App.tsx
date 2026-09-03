@@ -1,7 +1,7 @@
 import { Suspense, lazy, useEffect, useState } from "react";
 import { HashRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import CookieMascot from "./components/CookieMascot";
+import Logo from "./components/Logo";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import CartDrawer from "./components/CartDrawer";
@@ -35,8 +35,8 @@ function LoadingScreen({ done }: { done: boolean }) {
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="text-center">
-            <CookieMascot size={150} className="mx-auto" />
-            <p className="mt-4 font-display font-semibold text-espresso-900 text-[22px]">Warming up the ovens…</p>
+            <Logo stacked size={132} tagline="Small-Batch Bakery" />
+            <p className="mt-5 font-display font-semibold text-espresso-900 text-[22px]">Warming up the ovens…</p>
             <div className="mt-3 flex justify-center gap-1.5">
               {[0, 1, 2].map((i) => (
                 <span key={i} className="typing-dot w-2 h-2 rounded-full bg-gold-500 inline-block" style={{ animationDelay: `${i * 0.18}s` }} />

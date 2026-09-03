@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { BarChart3, CheckCircle2, Eye, EyeOff, LogOut, MessageCircle, Package, Receipt } from "lucide-react";
 import { Link } from "react-router-dom";
 import CookieMascot from "../components/CookieMascot";
+import Logo from "../components/Logo";
 import { useShop } from "../context/ShopContext";
 import { cx } from "../lib/utils";
 import Analytics from "./admin/Analytics";
@@ -44,12 +45,8 @@ function Login() {
 
       {/* brand side */}
       <div className="relative hidden lg:flex flex-col justify-between p-12 bg-espresso-900/60 border-r border-cream-200/10">
-        <Link to="/" className="flex items-center gap-3 w-fit">
-          <CookieMascot size={48} withShadow={false} />
-          <span className="leading-none">
-            <span className="block font-display font-semibold text-[22px] text-cream-50">Scoopable</span>
-            <span className="block text-[9px] font-bold tracking-[0.32em] text-gold-400 uppercase mt-1">Back of House</span>
-          </span>
+        <Link to="/" className="w-fit transition-opacity hover:opacity-85" aria-label="Back to the store">
+          <Logo dark size={44} tagline="Back of House" />
         </Link>
         <div>
           <CookieMascot size={240} className="cursor-pointer" />
@@ -74,9 +71,8 @@ function Login() {
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           className={cx("w-full max-w-md rounded-2xl bg-cream-50 text-espresso-900 p-8 shadow-lift", error && "anim-shake")}
         >
-          <div className="lg:hidden flex items-center gap-2.5 mb-6">
-            <CookieMascot size={42} withShadow={false} />
-            <p className="font-display font-semibold text-[20px]">Scoopable · Admin</p>
+          <div className="lg:hidden mb-6">
+            <Logo size={38} tagline="Admin Portal" />
           </div>
           <p className="text-[10px] font-bold tracking-[0.3em] uppercase text-gold-600">Admin portal</p>
           <h2 className="mt-1.5 font-display font-semibold text-[30px] leading-tight">Clock in, baker.</h2>
@@ -169,13 +165,9 @@ function Dashboard() {
       {/* topbar */}
       <header className="relative sticky top-0 z-40 bg-espresso-950/92 backdrop-blur-md border-b border-cream-200/10">
         <div className="max-w-6xl mx-auto px-4 h-[64px] flex items-center justify-between gap-3">
-          <div className="flex items-center gap-2.5">
-            <CookieMascot size={38} withShadow={false} />
-            <div className="leading-none">
-              <p className="font-display font-semibold text-[17px] text-cream-50">Scoopable</p>
-              <p className="text-[8.5px] font-bold tracking-[0.3em] text-gold-400 uppercase mt-0.5">Back of House</p>
-            </div>
-          </div>
+          <Link to="/" className="transition-opacity hover:opacity-85" aria-label="Back to the store">
+            <Logo dark size={34} tagline="Back of House" />
+          </Link>
 
           <nav className="hidden md:flex items-center gap-1">
             {TABS.map((t) => (
