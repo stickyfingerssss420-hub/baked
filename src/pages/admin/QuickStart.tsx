@@ -15,8 +15,8 @@ const STEPS = [
   },
   {
     icon: <Package size={16} />,
-    title: "Keep inventory honest",
-    body: "Inventory tab: stock drops automatically with every order. Tap − / + to correct it, +25 after a bake. Anything under 10 turns red.",
+    title: "Set your real stock",
+    body: "Fresh install: every flavor starts at 24 scoops so the store works on day one. Open the Inventory tab and set the numbers you actually scooped today — stock then deducts automatically with each order, and anything under 10 turns red.",
   },
   {
     icon: <MessageCircle size={16} />,
@@ -91,7 +91,7 @@ export default function QuickStart() {
             </div>
             <div className="px-5 pb-4 flex items-center justify-between gap-3">
               <p className="text-[11.5px] text-cream-200/45">
-                Tip: log in as <span className="font-bold text-cream-200/70">stickyfinger420</span> on your phone too — orders and chat follow you.
+                Tip: open this portal on your phone too — it's fully touch-friendly. Wire up Supabase (see SETUP.md) and orders follow you across devices.
               </p>
               <button
                 onClick={dismiss}

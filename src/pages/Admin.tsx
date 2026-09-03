@@ -160,7 +160,7 @@ function Dashboard() {
   const pendingCount = orders.filter((o) => o.status === "pending").length;
 
   return (
-    <main className="relative min-h-screen bg-espresso-950 text-cream-100">
+    <main className="relative min-h-dvh bg-espresso-950 text-cream-100">
       <div className="absolute inset-0 dotgrid-dark opacity-40 pointer-events-none" aria-hidden />
 
       {/* topbar */}

@@ -16,7 +16,7 @@ import {
   getChat,
   getInventory,
   getOrders,
-  seedIfNeeded,
+  initFreshInstall,
   setOrderStatus,
   subscribe,
   type ChatMessage,
@@ -153,9 +153,9 @@ export function ShopProvider({ children }: { children: ReactNode }) {
   const cartRef = useRef(cart);
   cartRef.current = cart;
 
-  /* seed demo data + keep live state in sync across tabs */
+  /* fresh-install init (zero data) + keep live state in sync across tabs */
   useEffect(() => {
-    seedIfNeeded();
+    initFreshInstall();
     setOrders(getOrders());
     setInventory(getInventory());
     setChat(getChat());

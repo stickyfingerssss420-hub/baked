@@ -67,11 +67,31 @@ export default function Analytics() {
   const pending = orders.filter((o) => o.status === "pending").length;
   const best = sellers[0];
 
+  const hasSales = totalOrders > 0;
+
   const stats = [
-    { label: `Revenue · ${range}d`, value: peso(totalRevenue), sub: trend.up ? `▲ ${trend.pct}% vs prior window` : `▼ ${trend.pct}% vs prior window`, up: trend.up, icon: <Banknote size={18} /> },
-    { label: "Paid orders", value: String(totalOrders), sub: `${peso(aov)} average order`, up: true, icon: <Receipt size={18} /> },
+    {
+      label: `Revenue · ${range}d`,
+      value: peso(totalRevenue),
+      sub: hasSales ? (trend.up ? `▲ ${trend.pct}% vs prior window` : `▼ ${trend.pct}% vs prior window`) : "waiting for your first order",
+      up: hasSales ? trend.up : null,
+      icon: <Banknote size={18} />,
+    },
+    {
+      label: "Paid orders",
+      value: String(totalOrders),
+      sub: hasSales ? `${peso(aov)} average order` : "they land here in real time",
+      up: hasSales ? true : null,
+      icon: <Receipt size={18} />,
+    },
     { label: "Awaiting payment", value: String(pending), sub: "need confirmation", up: null, icon: <TimerReset size={18} /> },
-    { label: "Best seller", value: best.product.name, sub: `${best.sold} pcs · ${peso(best.rev)}`, up: true, icon: <Crown size={18} /> },
+    {
+      label: "Best seller",
+      value: hasSales && best.sold > 0 ? best.product.name : "—",
+      sub: hasSales && best.sold > 0 ? `${best.sold} pcs · ${peso(best.rev)}` : "your first sale decides",
+      up: null,
+      icon: <Crown size={18} />,
+    },
   ];
 
   return (
@@ -115,6 +135,16 @@ export default function Analytics() {
         </div>
 
         <div className="mt-5 h-[280px]">
+          {!hasSales ? (
+            <div className="h-full grid place-items-center rounded-lg border border-dashed border-cream-200/20 px-6 text-center">
+              <div>
+                <p className="font-display font-semibold text-[19px] text-cream-100">A blank canvas — ₱0 so far</p>
+                <p className="mt-1.5 text-[13px] text-cream-200/55 max-w-sm leading-relaxed">
+                  The graph draws itself the moment your first order is confirmed. No demo numbers here — every peso you'll see is real.
+                </p>
+              </div>
+            </div>
+          ) : (
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={series} margin={{ top: 6, right: 8, left: -8, bottom: 0 }}>
               <defs>
@@ -142,13 +172,16 @@ export default function Analytics() {
               <Area type="monotone" dataKey="revenue" stroke="#D4A85C" strokeWidth={2.5} fill="url(#revGold)" dot={false} activeDot={{ r: 4.5, fill: "#D4A85C", stroke: "#2A1A0F", strokeWidth: 2 }} />
             </AreaChart>
           </ResponsiveContainer>
+          )}
         </div>
       </div>
 
       {/* best sellers */}
       <div className="rounded-xl border border-cream-200/10 bg-espresso-900/70 p-5">
         <h2 className="font-display font-semibold text-[20px] text-cream-50">Best sellers</h2>
-        <p className="text-[12.5px] text-cream-200/55 mt-0.5">Units sold across paid orders.</p>
+        <p className="text-[12.5px] text-cream-200/55 mt-0.5">
+          {hasSales ? "Units sold across paid orders." : "Nothing sold yet — the ranking builds itself as orders come in."}
+        </p>
         <ul className="mt-5 space-y-3.5">
           {sellers.map((s, i) => (
             <li key={s.product.id} className="flex items-center gap-3.5">

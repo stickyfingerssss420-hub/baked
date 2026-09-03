@@ -76,7 +76,8 @@ export default function ChatWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.96 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed bottom-24 right-4 z-[60] w-[min(92vw,360px)] h-[480px] max-h-[70vh] rounded-2xl overflow-hidden shadow-lift border border-cocoa-500/15 bg-cream-50 flex flex-col"
+            className="fixed right-4 z-[60] w-[min(92vw,360px)] h-[480px] max-h-[70vh] rounded-2xl overflow-hidden shadow-lift border border-cocoa-500/15 bg-cream-50 flex flex-col"
+            style={{ bottom: "calc(max(1.25rem, env(safe-area-inset-bottom)) + 4.5rem)" }}
             role="dialog"
             aria-label="Chat with Scoopable Cookies"
           >
@@ -175,7 +176,8 @@ export default function ChatWidget() {
       {/* launcher */}
       <button
         onClick={() => setOpen((v) => !v)}
-        className={`fixed bottom-5 right-4 z-[60] w-14 h-14 rounded-full bg-espresso-900 grid place-items-center shadow-lift hover:bg-espresso-800 transition-all hover:scale-105 active:scale-95 ${unread && !open ? "pulse-ring relative" : ""}`}
+        className={`fixed right-4 z-[60] w-14 h-14 rounded-full bg-espresso-900 grid place-items-center shadow-lift hover:bg-espresso-800 transition-all hover:scale-105 active:scale-95 ${unread && !open ? "pulse-ring relative" : ""}`}
+        style={{ bottom: "max(1.25rem, env(safe-area-inset-bottom))" }}
         aria-label={open ? "Close chat" : "Chat with us"}
       >
         <CookieMascot size={42} withShadow={false} animate={!open} />

@@ -13,8 +13,8 @@
 /*  code needs to change. See SETUP.md for the full wiring guide.      */
 /* ------------------------------------------------------------------ */
 
-import { BIZ, PRODUCTS } from "../data/catalog";
-import { mulberry32, orderNumber, uid } from "./utils";
+import { PRODUCTS } from "../data/catalog";
+import { uid } from "./utils";
 
 /* ------------------------------- types ------------------------------ */
 
@@ -65,10 +65,11 @@ export type InventoryMap = Record<string, InventoryEntry>;
 /* ------------------------------ storage ----------------------------- */
 
 const KEYS = {
-  seeded: "sc_seeded_v1",
-  orders: "sc_orders_v1",
-  inventory: "sc_inventory_v1",
-  chat: "sc_chat_v1",
+  // v2 → clean slate; any v1 demo data left in a browser is ignored
+  seeded: "sc_seeded_v2",
+  orders: "sc_orders_v2",
+  inventory: "sc_inventory_v2",
+  chat: "sc_chat_v2",
 };
 
 function read<T>(key: string, fallback: T): T {
@@ -185,75 +186,27 @@ export function appendChat(msg: Omit<ChatMessage, "id" | "ts">) {
   emit("chat");
 }
 
-/* --------------------------- demo seed data ------------------------- */
-/*  Seeds 14 days of plausible order history on first run so the admin */
-/*  analytics are alive out of the box. Delete the "sc_seeded_v1" key  */
-/*  in localStorage to reseed. Real deployments can skip this block.   */
+/* --------------------------- fresh install -------------------------- */
+/*  This shop ships CLEAN for a new owner:                             */
+/*    • 0 orders · ₱0 revenue · empty chat · empty analytics           */
+/*    • inventory starts at one fresh batch per flavor so the          */
+/*      storefront works on day one — set real counts in the           */
+/*      Inventory tab after each bake (orders auto-deduct stock).      */
+/*  Storage keys are versioned ("_v2") so any older demo data in an    */
+/*  existing browser is ignored automatically.                         */
 
-export function seedIfNeeded() {
+export const STARTER_BATCH = 24; // scoops per flavor on day one — adjust in admin
+
+export function initFreshInstall() {
   if (localStorage.getItem(KEYS.seeded)) return;
 
-  // Inventory from catalog defaults
   const inv: InventoryMap = {};
   PRODUCTS.forEach((p) => {
-    inv[p.id] = { stock: 18 + Math.floor(Math.random() * 30), cost: p.cost };
+    inv[p.id] = { stock: STARTER_BATCH, cost: p.cost };
   });
-  inv["choco-walnut"] = { ...inv["choco-walnut"], stock: 7 }; // demo low-stock alert
   write(KEYS.inventory, inv);
+  write(KEYS.orders, []); // zero orders — every sale from here is real
+  write(KEYS.chat, []); // empty inbox
 
-  // 14 days of orders
-  const rand = mulberry32(20250420);
-  const names = ["Mika", "Andrei", "Bea", "Jolo", "Kat", "Marco", "Tin", "Paolo", "Ria", "Sam", "Nadia", "Vince", "Cams", "Denise"];
-  const weighted = ["choco-chip", "choco-chip", "choco-chip", "triple-choc", "triple-choc", "smores", "smores", "choco-walnut", "fudge-brownie", "fudge-brownie"];
-  const orders: Order[] = [];
-  const now = Date.now();
-
-  for (let daysAgo = 13; daysAgo >= 0; daysAgo--) {
-    const dayStart = now - daysAgo * 86_400_000;
-    const isWeekend = [0, 6].includes(new Date(dayStart).getDay());
-    const count = 1 + Math.floor(rand() * (isWeekend ? 5 : 3));
-    for (let i = 0; i < count; i++) {
-      const picks = new Set<string>();
-      const lines = 1 + Math.floor(rand() * 2.4);
-      for (let l = 0; l < lines; l++) picks.add(weighted[Math.floor(rand() * weighted.length)]);
-      const items = [...picks].map((pid) => {
-        const p = PRODUCTS.find((x) => x.id === pid)!;
-        return { id: p.id, name: p.name, price: p.price, img: p.img, qty: 1 + Math.floor(rand() * 4) };
-      });
-      const subtotal = items.reduce((s, it) => s + it.price * it.qty, 0);
-      const delivery: DeliveryMethod = rand() < 0.62 ? "delivery" : "pickup";
-      const payRoll = rand();
-      const payment: PaymentMethod = payRoll < 0.45 ? "gcash" : payRoll < 0.7 ? "maya" : "cod";
-      const deliveryFee = delivery === "delivery" ? BIZ.deliveryFee : 0;
-      let status: OrderStatus = "completed";
-      if (daysAgo <= 1) status = rand() < 0.5 ? "pending" : "confirmed";
-      else if (daysAgo <= 3) status = rand() < 0.75 ? "completed" : "confirmed";
-      if (daysAgo === 5 && i === 0) status = "rejected";
-      orders.push({
-        id: uid("ord"),
-        number: orderNumber(),
-        createdAt: dayStart - Math.floor(rand() * 10) * 3_600_000 - 3_600_000,
-        customer: {
-          name: names[Math.floor(rand() * names.length)],
-          phone: "09" + String(Math.floor(100000000 + rand() * 899999999)),
-          address: delivery === "delivery" ? `${Math.floor(rand() * 200) + 10} Sampaguita St, QC` : "",
-          notes: rand() < 0.25 ? "Leave at the gate please" : "",
-        },
-        delivery,
-        payment,
-        items,
-        subtotal,
-        discount: 0,
-        promoCode: null,
-        deliveryFee,
-        total: subtotal + deliveryFee,
-        status,
-        proof: null,
-      });
-    }
-  }
-  orders.sort((a, b) => b.createdAt - a.createdAt);
-  write(KEYS.orders, orders);
-  write(KEYS.chat, []);
   localStorage.setItem(KEYS.seeded, "1");
 }

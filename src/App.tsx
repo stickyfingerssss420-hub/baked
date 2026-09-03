@@ -55,7 +55,7 @@ function Shell() {
   const [legal, setLegal] = useState<"privacy" | "terms" | null>(null);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-dvh flex flex-col">
       {!isAdmin && <Header />}
       <div className="flex-1">
         <Suspense fallback={null}>

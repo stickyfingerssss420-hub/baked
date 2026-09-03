@@ -69,6 +69,16 @@ export default function ProductCard({ product, index = 0 }: Props) {
           ))}
         </div>
 
+        {/* bake guide — the practical detail dough customers want */}
+        <p className="mt-3.5 pt-3 border-t border-dashed border-cocoa-500/20 flex items-center gap-2 text-[12px] font-bold text-cocoa-500">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" className="text-gold-600 shrink-0" aria-hidden>
+            <circle cx="12" cy="13" r="8" />
+            <path d="M12 9v4l2.5 2.5" />
+            <path d="M9 2h6" />
+          </svg>
+          {product.meta}
+        </p>
+
         <button
           onClick={() => addToCart(product.id)}
           disabled={soldOut}

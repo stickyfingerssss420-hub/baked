@@ -194,6 +194,60 @@ export default function Home() {
         </div>
       </div>
 
+      {/* ========================= TODAY'S TRAY ========================== */}
+      {/* Polaroid collage of the real dough — more photos up front, still minimal */}
+      <section className="relative max-w-6xl mx-auto px-4 pt-16">
+        <Reveal>
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div>
+              <p className="text-[11px] font-bold tracking-[0.3em] uppercase text-gold-600">Today's tray</p>
+              <h2 className="mt-2 font-display font-semibold text-espresso-900 text-[clamp(1.8rem,4.2vw,2.7rem)] leading-tight tracking-tight">
+                Five flavors, <em className="italic text-cocoa-500">one cold tray.</em>
+              </h2>
+            </div>
+            <p className="text-[13px] text-cocoa-500 max-w-[260px] leading-relaxed">
+              Every scoop below is live inventory — when a flavor sells out, it disappears from the tray.
+            </p>
+          </div>
+        </Reveal>
+
+        <div className="mt-9 flex gap-5 overflow-x-auto no-scrollbar snap-x snap-mandatory pb-5 lg:overflow-visible lg:flex-wrap lg:justify-center lg:items-end lg:gap-0">
+          {PRODUCTS.map((p, i) => {
+            const tilt = [-3, 2, -1.5, 2.5, -2][i % 5];
+            return (
+              <motion.figure
+                key={p.id}
+                initial={{ opacity: 0, y: 34, rotate: 0 }}
+                whileInView={{ opacity: 1, y: 0, rotate: tilt }}
+                whileHover={{ rotate: 0, y: -10 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.6, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                className="group relative shrink-0 w-[168px] sm:w-[192px] snap-center bg-cream-50 border border-cocoa-500/12 rounded-lg p-2.5 pb-3.5 shadow-soft hover:shadow-lift transition-shadow lg:-mx-2.5"
+              >
+                {/* tape strip */}
+                <span
+                  className="absolute -top-2.5 left-1/2 -translate-x-1/2 w-16 h-5 bg-gold-300/70 rounded-[2px] shadow-sm"
+                  style={{ transform: `translateX(-50%) rotate(${i % 2 === 0 ? -5 : 4}deg)` }}
+                  aria-hidden
+                />
+                <div className="overflow-hidden rounded-md aspect-square bg-cream-200">
+                  <img
+                    src={p.img}
+                    alt={`${p.name} — fresh dough scoop`}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                  />
+                </div>
+                <figcaption className="mt-2.5 px-1 flex items-baseline justify-between gap-2">
+                  <p className="font-display font-semibold text-[15px] text-espresso-900 leading-tight">{p.name}</p>
+                  <p className="text-[11.5px] font-extrabold text-gold-600 whitespace-nowrap">{peso(p.price)}</p>
+                </figcaption>
+              </motion.figure>
+            );
+          })}
+        </div>
+      </section>
+
       {/* ============================== MENU ============================= */}
       <section id="menu" className="relative scroll-mt-28 max-w-6xl mx-auto px-4 pt-20 pb-16">
         <Reveal>

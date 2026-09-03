@@ -13,6 +13,7 @@ export interface Product {
   cost: number; // cost price (₱) — used for margin analytics
   img: string;
   badge?: string;
+  meta: string; // scoop weight + bake guide shown on the card
   notes: string[]; // flavor notes shown on the card
 }
 
@@ -26,6 +27,7 @@ export const PRODUCTS: Product[] = [
     cost: 22,
     img: "https://image.qwenlm.ai/generated-images/e95e9da7-466f-4c8a-949b-1cff60a2c6b4/_result.png",
     badge: "Bestseller",
+    meta: "≈ 60 g scoop · bake 10–12 min @ 175°C",
     notes: ["brown butter", "sea salt"],
   },
   {
@@ -37,6 +39,7 @@ export const PRODUCTS: Product[] = [
     cost: 24,
     img: "https://image.qwenlm.ai/generated-images/1e0e9f5a-5adc-46bf-a2b9-28eeb88c7ae5/_result.png",
     badge: "For chocoholics",
+    meta: "≈ 60 g scoop · bake 11–13 min @ 175°C",
     notes: ["70% cacao", "double chunks"],
   },
   {
@@ -48,6 +51,7 @@ export const PRODUCTS: Product[] = [
     cost: 26,
     img: "https://image.qwenlm.ai/generated-images/1f643755-abb4-406a-a769-6e06a31bef9c/_result.png",
     badge: "Campfire classic",
+    meta: "≈ 60 g scoop · bake 10–12 min @ 175°C",
     notes: ["mini mallow", "graham"],
   },
   {
@@ -58,6 +62,7 @@ export const PRODUCTS: Product[] = [
     price: 50,
     cost: 25,
     img: "https://image.qwenlm.ai/generated-images/620856f4-6222-4de8-b4d1-f037bbdbca75/_result.png",
+    meta: "≈ 60 g scoop · bake 11–13 min @ 175°C",
     notes: ["candied walnut", "toasty"],
   },
   {
@@ -69,6 +74,7 @@ export const PRODUCTS: Product[] = [
     cost: 38,
     img: "https://image.qwenlm.ai/generated-images/d5d1cb98-5330-452c-aa76-c58820fc4d08/_result.png",
     badge: "Rich & dense",
+    meta: "≈ 90 g scoop · bake 18–22 min @ 165°C",
     notes: ["glossy batter", "70% cacao"],
   },
 ];

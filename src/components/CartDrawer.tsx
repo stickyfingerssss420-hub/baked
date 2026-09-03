@@ -134,7 +134,7 @@ export default function CartDrawer() {
 
             {/* footer */}
             {lines.length > 0 && (
-              <div className="shrink-0 border-t border-cocoa-500/12 px-5 py-4 bg-cream-100/70">
+              <div className="shrink-0 border-t border-cocoa-500/12 px-5 py-4 safe-b bg-cream-100/70">
                 <div className="flex items-center justify-between text-[14px] text-cocoa-600">
                   <span>Subtotal</span>
                   <span className="font-display font-semibold text-[22px] text-espresso-900">{peso(subtotal)}</span>

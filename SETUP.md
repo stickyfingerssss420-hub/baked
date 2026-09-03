@@ -41,6 +41,12 @@ every write persists to localStorage and broadcasts over a `BroadcastChannel` bu
 storefront cart, the chat widget, and the admin dashboard stay in sync across tabs with
 zero configuration — perfect for demos and single-device deployments.
 
+> **Ships factory-clean.** The app boots with **0 orders, ₱0 revenue, and an empty chat** — there is
+> no demo data anywhere. Inventory starts at 24 scoops per flavor (`STARTER_BATCH` in
+> `src/lib/backend.ts`) so the storefront is sellable on day one; set your real counts in
+> Admin → Inventory after each bake. Storage keys are versioned (`_v2`), so any older demo data
+> in a browser is ignored automatically.
+
 To go multi-device with Supabase:
 
 1. Create a free project at https://supabase.com and copy the **URL** and **anon key**.
